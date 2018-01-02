@@ -11,9 +11,12 @@
     for($ri = 0; $ri < $numrows; $ri++) {
         echo "<tr>\n";
         $row = pg_fetch_array($result, $ri);
+        $id = $row["id"];
         echo " <td>" . $row["nazwa1"] . "</td>
      <td>" . $row["nazwa2"] . "</td>
      <td>" . $row["zwyciezca"] . "</td>
+     <td> <a href=\"advancedResult.php?mecz=$id\">Szczegoly meczu</a> </td>
+
     </tr>
     ";
     }
