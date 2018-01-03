@@ -1,6 +1,19 @@
 <?php
 $link = pg_connect("host=localhost dbname=postgres user=postgres password=postgres");
 $teams = pg_query($link,"SELECT nazwa FROM druzyna");
+$numrows = pg_numrows($teams);
+
+function teamsDropDown($numrows, $teams): array
+{
+    for ($ri = 0; $ri < $numrows; $ri++) {
+        $row = pg_fetch_array($teams, $ri);
+        $teamName = $row["nazwa"];
+        if ($teamName != "Mecz nierozegrany") {
+            echo "<option value=\"$teamName\">" . $teamName . "</option>";
+        }
+    }
+    return array($ri, $row, $teamName);
+}
 ?>
 <html>
 <head>
@@ -18,15 +31,7 @@ $teams = pg_query($link,"SELECT nazwa FROM druzyna");
         Drużyna
         <select name="team">
             <?php
-            $teams = pg_query($link,"SELECT nazwa FROM druzyna");
-            $numrows = pg_numrows($teams);
-            for($ri = 0; $ri < $numrows; $ri++) {
-                $row = pg_fetch_array($teams, $ri);
-                $teamName = $row["nazwa"];
-                if ($teamName != "Mecz nierozegrany") {
-                    echo "<option value=\"$teamName\">" . $teamName . "</option>";
-                }
-            }
+                teamsDropDown($numrows, $teams);
             ?>
         </select>
         <br/>
@@ -38,5 +43,26 @@ $teams = pg_query($link,"SELECT nazwa FROM druzyna");
         <br/>
         <input type="submit" value="Dodaj"/>
     </form>
+    <br/>
+    <h3>Dodaj mecz</h3>
+    <form method="post" action="addMatch.php" id="addMatch">
+        Druzyna A
+        <select name="teamA">
+            <?php
+                teamsDropDown($numrows, $teams);
+            ?>
+        </select>
+        <br/>
+        Druzyna B
+        <select name="teamB">
+            <?php
+                teamsDropDown($numrows, $teams);
+            ?>
+        </select>
+        <br/>
+        <input type="submit" value="Dodaj"/>
+    </form>
+    <?php include 'futureMatches.php';?>
 </body>
 </html>
+<?php pg_close($link)?>
