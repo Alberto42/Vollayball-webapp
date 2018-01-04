@@ -7,7 +7,7 @@
 <?php
 include '../utils.php';
 connect();
-$team = $_POST["druzyna"];
+$team = $_POST["team"];
 $result = pg_query($link,
     "SELECT druzyna1.nazwa nazwa1,
           druzyna2.nazwa nazwa2,
@@ -18,7 +18,7 @@ JOIN sklad sklad2 ON sklad2.id = mecz.sklad_2
 JOIN druzyna druzyna1 ON druzyna1.id = sklad1.druzyna
 JOIN druzyna druzyna2 ON druzyna2.id = sklad2.druzyna
 LEFT JOIN druzyna druzynaZwyciezka ON druzynaZwyciezka.id = mecz.zwyciezca
-WHERE druzyna1.nazwa = '$team' OR druzyna2.nazwa = '$team'");
+WHERE druzyna1.nazwa LIKE '$team' OR druzyna2.nazwa LIKE '$team'");
 $numrows = pg_numrows($result);
 ?>
 <?php include 'result.php';?>

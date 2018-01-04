@@ -14,9 +14,9 @@ WHERE mecz.zwyciezca = 0
 $numrows = pg_numrows($futureMatches);
 
 ?>
-<h2 align=center>Nierozegrane mecze:</h2>
+<h2>Nierozegrane mecze:</h2>
 
-<table border="1" align=center>
+<table border="1">
     <tr>
         <th>Pierwsza drużyna</th>
         <th>Druga drużyna</th>
@@ -59,9 +59,11 @@ $numrows = pg_numrows($futureMatches);
             $linkAddSklad2 . "
                 </td>
                 <td> 
+                ";
+                if ($linkAddSklad1 == "" && $linkAddSklad2 == "") echo "
                     <a href=\"play.php?mecz=$match&druzyna1=$druzyna1&druzyna2=$druzyna2\">
                         Rozegraj
-                    </a> 
+                    </a>  "; echo "
                 </td>
 
             </tr>";

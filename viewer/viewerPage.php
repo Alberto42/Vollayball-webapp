@@ -1,12 +1,28 @@
+<?php
+include '../utils.php';
+connect();
+$teams = pg_query($link, "SELECT nazwa FROM druzyna");
+
+$numrows = pg_numrows($teams);
+pg_close($link);
+?>
 <html>
 <head>
     <title>Strona kibica</title>
 </head>
 <h1 align="center">Strona kibica</h1>
+<form method="post" action="matchByTeam.php">
+    <input type="hidden" name="druzyna" value="%" />
+    <input type="submit" value="Pokaz wszystkie mecze" />
+</form>
 <h3>Szukaj po druzynie</h3>
 <form method="post" action="matchByTeam.php">
     Nazwa druzyny
-    <input type="text" name="druzyna">
+    <select name="team">
+        <?php
+        teamsDropDown($numrows, $teams);
+        ?>
+    </select>
     <input type="submit" value="Szukaj">
 </form>
 <br>

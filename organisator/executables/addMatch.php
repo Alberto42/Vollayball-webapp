@@ -2,9 +2,10 @@
 include '../../utils.php';
 $teamA = $_POST["teamA"];
 $teamB = $_POST["teamB"];
+if ($teamA != $teamB) {
 
-connect();
-pg_query($link,"CREATE OR REPLACE FUNCTION addMatch()
+    connect();
+    pg_query($link, "CREATE OR REPLACE FUNCTION addMatch()
     RETURNS VOID AS $$
     DECLARE
       idSklad1 INTEGER;
@@ -24,8 +25,11 @@ pg_query($link,"CREATE OR REPLACE FUNCTION addMatch()
       VALUES(nextval('mecz_id_seq1'::regclass),idSklad1,idSklad2,0);
     END;
     $$ LANGUAGE plpgsql;
- SELECT addMatch();" );
-pg_close($link);
-echo "<h3>Dodano mecz pomiędzy drużyną: $teamA a drużyną $teamB</h3>";
+ SELECT addMatch();");
+    pg_close($link);
 
+    echo "<h3>Dodano mecz pomiędzy drużyną: $teamA a drużyną $teamB</h3>";
+} else {
+    echo "<h3>Nie mozna dodac meczu pomiędzy takimi samymi drużynami</h3>";
+}
 ?>
