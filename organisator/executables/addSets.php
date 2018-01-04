@@ -39,15 +39,5 @@ if ($correct) {
 } else {
     echo "<h3>Niepoprawne wyniki setów</h3>";
 }
-
-
-pg_query($link,"UPDATE mecz SET zwyciezca =
-(
-    SELECT sklad.druzyna
-    FROM mecz
-    JOIN sklad ON mecz.sklad_$winner = sklad.id
-    WHERE mecz.id = $match
-)
-WHERE mecz.id = $match");
 pg_close($link);
 ?>

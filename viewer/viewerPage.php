@@ -12,7 +12,7 @@ pg_close($link);
 </head>
 <h1 align="center">Strona kibica</h1>
 <form method="post" action="matchByTeam.php">
-    <input type="hidden" name="druzyna" value="%" />
+    <input type="hidden" name="team" value="%" />
     <input type="submit" value="Pokaz wszystkie mecze" />
 </form>
 <h3>Szukaj po druzynie</h3>
