@@ -9,3 +9,4 @@ include '../../utils.php';
 connect();
 pg_query($link,"UPDATE dostepnosczgloszen SET dostepne = FALSE");
 pg_close($link);
+echo "<h3>Zgłoszenia zostały zamknięte</h3>";

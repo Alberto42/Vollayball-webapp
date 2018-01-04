@@ -28,7 +28,7 @@ if ($teamA != $teamB) {
  SELECT addMatch();");
     pg_close($link);
 
-    echo "<h3>Dodano mecz pomiędzy drużyną: $teamA a drużyną $teamB</h3>";
+    echo "<h3>Dodano mecz pomiędzy drużyną $teamA a drużyną $teamB</h3>";
 } else {
     echo "<h3>Nie mozna dodac meczu pomiędzy takimi samymi drużynami</h3>";
 }

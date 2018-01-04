@@ -212,5 +212,8 @@ CREATE TRIGGER updateZwyciezcaTrigger
 
 
 INSERT INTO druzyna
-VALUES (0, 'Mecz nierozegrany')
+VALUES (0, 'Mecz nierozegrany');
+
+INSERT INTO dostepnosczgloszen
+VALUES(TRUE);
 

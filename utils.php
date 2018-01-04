@@ -3,7 +3,7 @@ function connect() {
     global $link;
     $link = pg_connect("
         host=localhost 
-        dbname=postgres 
+        dbname=postgres2
         user=postgres 
         password=postgres
         ");

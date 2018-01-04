@@ -24,6 +24,8 @@ for($i=1;$i<=5;$i++) {
         $winsB++;
 
 }
+if (!($winsA == 3 || $winsB == 3))
+    $correct=false;
 if ($winsA > $winsB)
     $winner = "1";
 else $winner = "2";
@@ -36,6 +38,7 @@ if ($correct) {
         pg_query($link, "INSERT INTO set
         VALUES(nextval('set_id_seq1'::regclass),$pointsA,$pointsB,$match)");
     }
+    echo "<h3> Sety zostały dodane </h3>";
 } else {
     echo "<h3>Niepoprawne wyniki setów</h3>";
 }

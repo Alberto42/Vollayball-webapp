@@ -4,9 +4,9 @@ $name = $_POST["name"];
 $surname = $_POST["surname"];
 $team = $_POST["team"];
 
+connect();
 $checkIfOpenQuery = pg_query($link,"SELECT dostepne FROM dostepnosczgloszen");
 $open = pg_fetch_array($checkIfOpenQuery,0)["dostepne"];
-connect();
 if ($open == "t") {
     pg_query($link, "INSERT INTO zawodnik
       SELECT nextval('zawodnik_id_seq1'::regclass), '$name', '$surname', druzyna.id
