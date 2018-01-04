@@ -5,7 +5,8 @@
 <body>
 
 <?php
-$link = pg_connect("host=localhost dbname=postgres user=postgres password=postgres");
+include '../utils.php';
+connect();
 $team = $_POST["druzyna"];
 $result = pg_query($link,
     "SELECT druzyna1.nazwa nazwa1,

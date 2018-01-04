@@ -1,5 +1,6 @@
 <?php
-$link = pg_connect("host=localhost dbname=postgres user=postgres password=postgres");
+include '../../utils.php';
+connect();
 $winsA=0;$winsB=0;
 $match = $_GET["mecz"];
 for($i=1;$i<=5;$i++) {
@@ -24,5 +25,6 @@ pg_query($link,"UPDATE mecz SET zwyciezca =
     JOIN sklad ON mecz.sklad_$winner = sklad.id
     WHERE mecz.id = $match
 )
-WHERE mecz.id = $match")
+WHERE mecz.id = $match");
+pg_close($link);
 ?>

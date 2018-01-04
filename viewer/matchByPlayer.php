@@ -5,7 +5,8 @@
 <body>
 
 <?php
-$link = pg_connect("host=localhost dbname=postgres user=postgres password=postgres");
+include '../utils.php';
+connect();
 $name = $_POST["imie"];
 $surname = $_POST["nazwisko"];
 $result = pg_query($link,
@@ -28,7 +29,7 @@ $result = pg_query($link,
         sklad_2 IN (SELECT * FROM sklady_zawierajace_zawodnika)"
 );
 $numrows = pg_numrows($result);
+include 'result.php';
 ?>
-<?php include 'result.php';?>
 </body>
 </html>

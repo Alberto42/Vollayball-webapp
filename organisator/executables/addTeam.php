@@ -1,5 +1,6 @@
 <?php
-$link = pg_connect("host=localhost dbname=postgres user=postgres password=postgres");
+include '../../utils.php';
+connect();
 $name = $_POST["name"];
 
 $checkIfOpenQuery = pg_query($link,"SELECT dostepne FROM dostepnosczgloszen");
@@ -11,6 +12,6 @@ if ($open == "t") {
 } else {
     echo "<h3>Zgloszenia zamkniete</h3>";
 }
-
+pg_close($link);
 ?>
 

@@ -3,7 +3,7 @@ $druzyna1 = $_GET['druzyna1'];
 $druzyna2 = $_GET['druzyna2'];
 $match = $_GET["mecz"];
 echo "<h3> $druzyna1 vs $druzyna2 </h3>
-    <form method=\"post\" action=\"addSets.php?mecz=$match\">"
+    <form method=\"post\" action=\"executables/addSets.php?mecz=$match\">"
 ?>
     1 set -
     <input type="number" name="set1A"/> :

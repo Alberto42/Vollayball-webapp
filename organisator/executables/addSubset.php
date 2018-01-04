@@ -1,5 +1,6 @@
 <?php
-$link = pg_connect("host=localhost dbname=postgres user=postgres password=postgres");
+include '../../utils.php';
+connect();
 $players = $_POST['playerIds'];
 $skladId = $_GET['skladId'];
 $N = count($players);
@@ -17,4 +18,5 @@ else
     }
     echo("Dodano sklad");
 }
+pg_close($link);
 ?>

@@ -1,8 +1,9 @@
 <?php
-$link = pg_connect("host=localhost dbname=postgres user=postgres password=postgres");
+include '../../utils.php';
 $teamA = $_POST["teamA"];
 $teamB = $_POST["teamB"];
 
+connect();
 pg_query($link,"CREATE OR REPLACE FUNCTION addMatch()
     RETURNS VOID AS $$
     DECLARE
@@ -24,6 +25,7 @@ pg_query($link,"CREATE OR REPLACE FUNCTION addMatch()
     END;
     $$ LANGUAGE plpgsql;
  SELECT addMatch();" );
+pg_close($link);
 echo "<h3>Dodano mecz pomiędzy drużyną: $teamA a drużyną $teamB</h3>";
 
 ?>

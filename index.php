@@ -1,9 +1,10 @@
 <html>
 <head>
-    <title>Strona kibica</title>
+    <title>Mecze</title>
 </head>
 <body>
-    <a href="viewerPage.php"> Strona kibica</a>
-    <a href="organisatorPage.php"> Strona organizatora</a>
+    <img src="ball.png" align="center"/><br/>
+    <a href="viewer/viewerPage.php" align="center"> Strona kibica</a><br/>
+    <a href="organisator/organisatorPage.php"> Strona organizatora</a>
 </body>
 </html>

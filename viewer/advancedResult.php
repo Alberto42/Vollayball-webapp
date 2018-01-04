@@ -7,7 +7,8 @@
 <h3>Składy drużyn</h3>
 <table border="1">
     <?php
-    $link = pg_connect("host=localhost dbname=postgres user=postgres password=postgres");
+    include '../utils.php';
+    connect();
     $match = $_GET["mecz"];
     $players1 = pg_query($link,
         "SELECT imie,nazwisko FROM zawodnik_sklad
