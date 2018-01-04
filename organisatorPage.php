@@ -63,6 +63,7 @@ function teamsDropDown($numrows, $teams): array
         <input type="submit" value="Dodaj"/>
     </form>
     <?php include 'futureMatches.php';?>
+<h3><a href="closeApplications.php">Zamknij zgloszenia</a></h3>
 </body>
 </html>
 <?php pg_close($link)?>

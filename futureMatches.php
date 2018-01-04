@@ -33,7 +33,7 @@ $numrows = pg_numrows($futureMatches);
         $sklad2Count = pg_fetch_array(
             pg_query($link,
                 "SELECT COUNT(*) n 
-                    FROM zawodnik_sklad WHERE id_sklad=$sklad2Id",0))["n"];
+                    FROM zawodnik_sklad WHERE id_sklad=$sklad2Id"),0)["n"];
         $linkAddSklad1 = "<br/> <a href=\"subset.php?druzyna=$druzyna1&skladId=$sklad1Id\">Ustal sklad</a>";
         $linkAddSklad2 = "<br/><a href=\"subset.php?druzyna=$druzyna2&skladId=$sklad2Id\">Ustal sklad</a>";
         if ($sklad1Count > 0)
@@ -51,7 +51,9 @@ $numrows = pg_numrows($futureMatches);
             $linkAddSklad2 ."
                 </td>
                 <td> 
-                    <a href=\"play.php?mecz=$match\">Rozegraj</a> 
+                    <a href=\"play.php?mecz=$match&druzyna1=$druzyna1&druzyna2=$druzyna2\">
+                        Rozegraj
+                    </a> 
                 </td>
 
             </tr>";
