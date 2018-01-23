@@ -21,4 +21,13 @@ function teamsDropDown($numrows, $teams): array
     }
     return array($ri, $row, $teamName);
 }
+
+function areApplicationsOpen($link)
+{
+    $checkIfOpenQuery = pg_query($link, "SELECT dostepne FROM dostepnosczgloszen");
+    $open = pg_fetch_array($checkIfOpenQuery, 0)["dostepne"];
+    return $open;
+}
 ?>
+
+
