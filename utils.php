@@ -28,6 +28,17 @@ function areApplicationsOpen($link)
     $open = pg_fetch_array($checkIfOpenQuery, 0)["dostepne"];
     return $open;
 }
+
+function checkIfRowExists($link, $givenTeamExistance): void
+{
+    $checkIfTeamExists = pg_query($link, $givenTeamExistance);
+    $numrows = pg_numrows($checkIfTeamExists);
+    if ($numrows > 0) {
+        echo "<h3>Błąd! Istnieje już taki wiersz</h3><br>";
+        echo "<a href=\"../organisatorPage.php\"> Wroc</a>";
+        exit;
+    }
+}
 ?>
 
 

@@ -5,6 +5,10 @@ $surname = $_POST["surname"];
 $team = $_POST["team"];
 
 connect();
+
+checkIfRowExists($link, "SELECT id FROM zawodnik
+  WHERE zawodnik.imie = '$name' AND zawodnik.nazwisko = '$surname'");
+
 $open = areApplicationsOpen($link);
 if ($open == "t") {
     pg_query($link, "INSERT INTO zawodnik

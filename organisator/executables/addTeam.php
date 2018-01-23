@@ -3,6 +3,8 @@ include '../../utils.php';
 connect();
 $name = $_POST["name"];
 
+checkIfRowExists($link, "SELECT nazwa FROM druzyna WHERE nazwa = '$name'");
+
 $open = areApplicationsOpen($link);
 if ($open == "t") {
     pg_query($link, "INSERT INTO druzyna
