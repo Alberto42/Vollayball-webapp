@@ -43,4 +43,6 @@ if ($correct) {
     echo "<h3>Niepoprawne wyniki setów</h3>";
 }
 pg_close($link);
+
+echo "<a href=\"../organisatorPage.php\"> Wroc</a>";
 ?>

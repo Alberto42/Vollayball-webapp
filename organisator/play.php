@@ -22,3 +22,5 @@ echo "<h3> $druzyna1 vs $druzyna2 </h3>
     <input type="number" name="set5B"/><br/>
     <input type="submit" value="Rozegraj"/>
 </form>
+
+<?php echo "<a href=\"organisatorPage.php\"> Wroc</a>"; ?>

@@ -35,5 +35,7 @@
     ";
     }
     pg_close($link);
+
+    echo "<a href=\"viewerPage.php\"> Wroc</a>"
     ?>
 </table>

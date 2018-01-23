@@ -36,4 +36,6 @@ pg_close($link);
     <br>
     <input type="submit" value="Szukaj">
 </form>
+
+<?php echo "<a href=\"../index.php\"> Wroc</a>" ;?>
 </html>

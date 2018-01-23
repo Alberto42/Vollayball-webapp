@@ -32,4 +32,6 @@ if ($teamA != $teamB) {
 } else {
     echo "<h3>Nie mozna dodac meczu pomiędzy takimi samymi drużynami</h3>";
 }
+
+echo "<a href=\"../organisatorPage.php\"> Wroc</a>";
 ?>

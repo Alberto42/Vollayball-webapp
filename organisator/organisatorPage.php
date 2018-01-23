@@ -3,8 +3,11 @@ include '../utils.php';
 connect();
 $teams = pg_query($link, "SELECT nazwa FROM druzyna");
 
-$numrows = pg_numrows($teams);
+$applicationsClosedQuery = pg_query($link, "SELECT * FROM dostepnosczgloszen" );
 
+$open = areApplicationsOpen($link);
+
+$numrows = pg_numrows($teams);
 ?>
 <html>
 <head>
@@ -53,7 +56,13 @@ $numrows = pg_numrows($teams);
     <br/>
     <input type="submit" value="Dodaj"/>
 </form>
-<?php include 'futureMatches.php'; ?>
-<h3><a href="executables/closeApplications.php">Zamknij zgloszenia</a></h3>
+<?php include 'futureMatches.php';
+if ($open == "t") {
+    $text = "Zamknij zgloszenia";
+} else $text = "Otworz zgloszenia";
+echo "<h3><a href=\"executables/closeOrOpenApplications.php?open=$open\">$text</a></h3>";
+
+echo "<a href=\"../index.php\"> Wroc</a>"
+?>
 </body>
 </html>

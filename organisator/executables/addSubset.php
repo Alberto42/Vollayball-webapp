@@ -6,7 +6,7 @@ $skladId = $_GET['skladId'];
 $N = count($players);
 if($N != 6)
 {
-    echo("Zła liczba graczy");
+    echo("<h3>Zła liczba graczy</h3>");
 }
 else
 {
@@ -16,7 +16,9 @@ else
         pg_query($link,"INSERT INTO zawodnik_sklad
             VALUES($playerId,$skladId)");
     }
-    echo("Dodano sklad");
+    echo("<h3>Dodano sklad</h3>");
 }
 pg_close($link);
+
+echo "<a href=\"../organisatorPage.php\"> Wroc</a>";
 ?>

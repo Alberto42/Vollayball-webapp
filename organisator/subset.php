@@ -29,4 +29,7 @@ echo "
     }
     ?>
     <input type="submit" value="Wybierz"/>
+
 </form>
+
+<?php echo "<a href=\"organisatorPage.php\"> Wroc</a>"; ?>
