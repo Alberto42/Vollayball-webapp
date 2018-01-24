@@ -11,7 +11,7 @@ $team = $_POST["team"];
 $result = pg_query($link,
     "SELECT druzyna1.nazwa nazwa1,
           druzyna2.nazwa nazwa2,
-           druzynaZwyciezka.nazwa zwyciezca, mecz.id id 
+           druzynaZwyciezka.nazwa zwyciezca, mecz.id id
 FROM mecz
 JOIN sklad sklad1 ON sklad1.id = mecz.sklad_1
 JOIN sklad sklad2 ON sklad2.id = mecz.sklad_2

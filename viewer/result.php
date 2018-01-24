@@ -1,6 +1,5 @@
-<?php
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-?>
 <h2 align=center>Mecze:</h2>
 
 <table border="1" align=center>
@@ -17,11 +16,13 @@
         $row = pg_fetch_array($result, $ri);
         $match = $row["id"];
         $points1 = pg_fetch_array(pg_query($link,
-            "SELECT COUNT(*) wynik FROM set 
-            WHERE mecz = $match AND set.wynik1 > set.wynik2"),0)["wynik"];
+            "SELECT COUNT(*) wynik FROM set
+            WHERE mecz = $match AND set.wynik1 > set.wynik2"),0);
+        $points1 = $points1["wynik"];
         $points2 = pg_fetch_array(pg_query($link,
-            "SELECT COUNT(*) wynik FROM set 
-            WHERE mecz = $match AND set.wynik1 < set.wynik2"),0)["wynik"];
+            "SELECT COUNT(*) wynik FROM set
+            WHERE mecz = $match AND set.wynik1 < set.wynik2"),0);
+        $points2 = $points2["wynik"];
         $points = $points1 . " : " . $points2;
         if ($row["zwyciezca"] == "Mecz nierozegrany")
             $points = "";

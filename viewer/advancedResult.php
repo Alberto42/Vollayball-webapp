@@ -1,3 +1,4 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <html>
 <head>
     <title>Szczegoly meczu</title>
@@ -33,9 +34,12 @@ WHERE mecz = $match");
 WHERE mecz.id=$match");
 
     $numrows = 6;
-    $teamName1 = pg_fetch_array($teamName1, 0)["nazwa"];
-    $teamName2 = pg_fetch_array($teamName2, 0)["nazwa"];
-    $winner = pg_fetch_array($winner,0)["nazwa"];
+    $teamName1 = pg_fetch_array($teamName1, 0);
+    $teamName1 = $teamName1["nazwa"];
+    $teamName2 = pg_fetch_array($teamName2, 0);
+    $teamName2 = $teamName2["nazwa"];
+    $winner = pg_fetch_array($winner,0);
+    $winner = $winner["nazwa"];
     echo "<tr><th>$teamName1</th></tr>";
     for ($ri = 0; $ri < $numrows; $ri++) {
         echo "<tr>\n";
@@ -91,4 +95,5 @@ WHERE mecz.id=$match");
     ?>
 
 </body>
+<a href=viewerPage.php> Wroc</a>
 </html>

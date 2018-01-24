@@ -10,6 +10,7 @@ $open = areApplicationsOpen($link);
 $numrows = pg_numrows($teams);
 ?>
 <html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <head>
     <title>Strona organizatora</title>
 </head>

@@ -1,10 +1,5 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
-/**
- * Created by PhpStorm.
- * User: albert
- * Date: 04.01.18
- * Time: 13:36
- */
 include '../../utils.php';
 $open = $_GET["open"];
 if ($open == "t") {

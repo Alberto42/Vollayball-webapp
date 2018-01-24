@@ -1,8 +1,8 @@
 <?php
 
 $futureMatches = pg_query($link, "
-SELECT druzyna1.nazwa nazwa1, druzyna2.nazwa nazwa2, mecz.id id, 
-mecz.sklad_1 sklad1id, mecz.sklad_2 sklad2id 
+SELECT druzyna1.nazwa nazwa1, druzyna2.nazwa nazwa2, mecz.id id,
+mecz.sklad_1 sklad1id, mecz.sklad_2 sklad2id
 FROM mecz
 JOIN sklad sklad1 ON sklad1.id = mecz.sklad_1
 JOIN sklad sklad2 ON sklad2.id = mecz.sklad_2
@@ -34,12 +34,14 @@ $numrows = pg_numrows($futureMatches);
 
         $sklad1Count = pg_fetch_array(
             pg_query($link,
-                "SELECT COUNT(*) n 
-                    FROM zawodnik_sklad WHERE id_sklad=$sklad1Id"), 0)["n"];
+                "SELECT COUNT(*) n
+                    FROM zawodnik_sklad WHERE id_sklad=$sklad1Id"), 0);
+        $sklad1Count = $sklad1Count["n"];
         $sklad2Count = pg_fetch_array(
             pg_query($link,
-                "SELECT COUNT(*) n 
-                    FROM zawodnik_sklad WHERE id_sklad=$sklad2Id"), 0)["n"];
+                "SELECT COUNT(*) n
+                    FROM zawodnik_sklad WHERE id_sklad=$sklad2Id"), 0);
+        $sklad2Count = $sklad2Count["n"];
 
         $linkAddSklad1 = "<br/> <a href=\"subset.php?druzyna=$druzyna1&skladId=$sklad1Id\">Ustal sklad</a>";
         $linkAddSklad2 = "<br/><a href=\"subset.php?druzyna=$druzyna2&skladId=$sklad2Id\">Ustal sklad</a>";
@@ -58,7 +60,7 @@ $numrows = pg_numrows($futureMatches);
             . $druzyna2 .
             $linkAddSklad2 . "
                 </td>
-                <td> 
+                <td>
                 ";
                 if ($linkAddSklad1 == "" && $linkAddSklad2 == "") echo "
                     <a href=\"play.php?mecz=$match&druzyna1=$druzyna1&druzyna2=$druzyna2\">

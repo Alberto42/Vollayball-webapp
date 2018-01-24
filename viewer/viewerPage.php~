@@ -1,4 +1,3 @@
-<html>
 <?php
 include '../utils.php';
 connect();
@@ -7,6 +6,7 @@ $teams = pg_query($link, "SELECT nazwa FROM druzyna");
 $numrows = pg_numrows($teams);
 pg_close($link);
 ?>
+<html>
 <head>
     <title>Strona kibica</title>
 </head>
@@ -15,7 +15,7 @@ pg_close($link);
     <input type="hidden" name="team" value="%" />
     <input type="submit" value="Pokaz wszystkie mecze" />
 </form>
-<h3>Szukaj po druzynie</h3>
+<!--<h3>Szukaj po druzynie</h3>
 <form method="post" action="matchByTeam.php">
     Nazwa druzyny
     <select name="team">
@@ -24,7 +24,7 @@ pg_close($link);
         ?>
     </select>
     <input type="submit" value="Szukaj">
-</form>
+</form> -->
 <br>
 <h3>Szukaj po zawodniku</h3>
 <form method="post" action="matchByPlayer.php">
@@ -36,6 +36,4 @@ pg_close($link);
     <br>
     <input type="submit" value="Szukaj">
 </form>
-
-<?php echo "<a href=\"../index.php\"> Wroc</a>" ;?>
 </html>

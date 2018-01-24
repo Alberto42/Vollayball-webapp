@@ -2,15 +2,15 @@
 function connect() {
     global $link;
     $link = pg_connect("
-        host=localhost 
-        dbname=postgres2
-        user=postgres 
-        password=postgres
+        host=labdb
+        dbname=bd
+        user=ac370756
+        password=maslo
         ");
 
 }
 
-function teamsDropDown($numrows, $teams): array
+function teamsDropDown($numrows, $teams)
 {
     for ($ri = 0; $ri < $numrows; $ri++) {
         $row = pg_fetch_array($teams, $ri);
@@ -19,17 +19,16 @@ function teamsDropDown($numrows, $teams): array
             echo "<option value=\"$teamName\">" . $teamName . "</option>";
         }
     }
-    return array($ri, $row, $teamName);
 }
 
 function areApplicationsOpen($link)
 {
     $checkIfOpenQuery = pg_query($link, "SELECT dostepne FROM dostepnosczgloszen");
-    $open = pg_fetch_array($checkIfOpenQuery, 0)["dostepne"];
-    return $open;
+    $open = pg_fetch_array($checkIfOpenQuery, 0);
+    return $open["dostepne"];
 }
 
-function checkIfRowExists($link, $givenTeamExistance): void
+function checkIfRowExists($link, $givenTeamExistance)
 {
     $checkIfTeamExists = pg_query($link, $givenTeamExistance);
     $numrows = pg_numrows($checkIfTeamExists);
@@ -40,5 +39,3 @@ function checkIfRowExists($link, $givenTeamExistance): void
     }
 }
 ?>
-
-

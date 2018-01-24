@@ -8,10 +8,19 @@ include '../../utils.php';
 connect();
 $name = $_POST["name"];
 
+<<<<<<< Updated upstream
 checkIfRowExists($link, "SELECT nazwa FROM druzyna WHERE nazwa = '$name'");
 
 $open = areApplicationsOpen($link);
-
+=======
+$checkIfOpenQuery = pg_query($link,"SELECT dostepne FROM dostepnosczgloszen");
+    if($link) {
+       echo 'connected';
+    } else {
+        echo 'there has been an error connecting';
+    }
+$open = pg_fetch_array($checkIfOpenQuery,0)["dostepne"];
+>>>>>>> Stashed changes
 if ($open == "t") {
     pg_query($link, "INSERT INTO druzyna
   VALUES (nextval('druzyna_id_seq1'::regclass),'$name')");
