@@ -5,9 +5,12 @@ connect();
 $winsA=0;$winsB=0;
 $match = $_GET["mecz"];
 $correct=true;
+$end = false;
 for($i=1;$i<=5;$i++) {
     $pointsA = $_POST["set".$i."A"];
     $pointsB = $_POST["set".$i."B"];
+    if ($end && ($pointsA != 0 || $pointsB != 0 ) )
+      $correct = false;
     if ($pointsA == 0 && $pointsB == 0) {
         for($j=$i+1;$j<=5;$j++) {
             $pointsA = $_POST["set".$j."A"];
@@ -23,6 +26,8 @@ for($i=1;$i<=5;$i++) {
         $winsA++;
     else
         $winsB++;
+    if ($winsA == 3 || $winsB == 3)
+      $end = true;
 
 }
 if (!($winsA == 3 || $winsB == 3))
